@@ -25,7 +25,7 @@ function getListeners(instance, eventName) {
 	return events.get(eventName);
 }
 
-class Emittery {
+export default class Emittery {
 	constructor() {
 		anyMap.set(this, new Set());
 		eventsMap.set(this, new Map());
@@ -141,12 +141,3 @@ class Emittery {
 		return count;
 	}
 }
-
-// Subclass used to encourage TS users to type their events.
-Emittery.Typed = class extends Emittery {};
-Object.defineProperty(Emittery.Typed, 'Typed', {
-	enumerable: false,
-	value: undefined
-});
-
-module.exports = Emittery;
